@@ -13,8 +13,7 @@ export function middleware(req) {
     // Extract country. Default to US if not found.
     const country = (req.geo && req.geo.country) || 'US';
 
-    console.log(req);
-    console.log(NextRequest);
+    console.log('referrer', req.referrer);
 
     // Specify the correct route based on the requests location
     if (country === BLOCKED_COUNTRY) {
