@@ -12,8 +12,6 @@ export function middleware(req) {
     // Extract country. Default to US if not found.
     const country = (req.geo && req.geo.country) || 'US';
 
-    console.log(req.geo);
-
     console.log(`Visitor from ${country}`);
 
     // Specify the correct route based on the requests location
