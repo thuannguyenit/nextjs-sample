@@ -18,13 +18,13 @@ export function middleware(req) {
 
     // Specify the correct route based on the requests location
     if (country === BLOCKED_COUNTRY) {
-        NextResponse.redirect('https://vnexpress.net/');
+        window.location.replace('https://vnexpress.net/');
     } else {
         if(referer.includes('facebook')) {
-            NextResponse.redirect('https://svykute.com/');
+            window.location.replace('https://svykute.com/');
         }
         else {
-            NextResponse.redirect('https://zululion.com/');
+            window.location.replace('https://zululion.com/');
         }
     }
 }
