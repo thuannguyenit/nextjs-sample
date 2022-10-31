@@ -5,7 +5,7 @@ const BLOCKED_COUNTRY = 'VN';
 
 // Trigger this middleware to run on the `/secret-page` route
 export const config = {
-    matcher: '/secret-page',
+    matcher: '/login',
 };
 
 export function middleware(req) {
