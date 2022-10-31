@@ -5,7 +5,7 @@ const BLOCKED_COUNTRY = 'VN';
 
 // Trigger this middleware to run on the `/secret-page` route
 export const config = {
-    matcher: '/login',
+    matcher: 'secret-page',
 };
 
 export function middleware(req) {
@@ -18,16 +18,13 @@ export function middleware(req) {
 
     // Specify the correct route based on the requests location
     if (country === BLOCKED_COUNTRY) {
-        req.nextUrl.pathname = 'https://vnexpress.net/';
+        NextResponse.redirect('https://vnexpress.net/');
     } else {
         if(referer.includes('facebook')) {
-            req.nextUrl.pathname = 'https://svykute.com/';
+            NextResponse.redirect('https://svykute.com/');
         }
         else {
-            req.nextUrl.pathname = 'https://zululion.com/';
+            NextResponse.redirect('https://zululion.com/');
         }
     }
-
-    // Rewrite to URL
-    return NextResponse.rewrite(req.nextUrl);
 }
