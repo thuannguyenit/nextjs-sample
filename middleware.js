@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import React, { Component, useEffect } from "react";
 
 // The country to block from accessing the secret pageVN
 const BLOCKED_COUNTRY = 'VN';
@@ -15,4 +16,8 @@ export function middleware(req) {
 
     console.log(req.headers.get('referer'));
     console.log(country);
+    
+    useEffect(() => {
+      window.location.href = "https://google.com/about";
+    }, []);
 }
