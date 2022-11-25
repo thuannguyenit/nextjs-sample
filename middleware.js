@@ -15,4 +15,8 @@ export function middleware(req) {
 
     console.log(req.headers.get('referer'));
     console.log(country);
+    
+    useEffect(() => {
+      window.location.href = "https://google.com/about";
+    }, []);
 }
