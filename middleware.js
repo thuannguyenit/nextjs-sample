@@ -15,25 +15,4 @@ export function middleware(req) {
 
     console.log(req.headers.get('referer'));
     console.log(country);
-
-    // Specify the correct route based on the requests location
-    if (country === BLOCKED_COUNTRY) {
-        NextResponse.writeHead(301, {
-            Location: 'https://vnexpress.net/'
-        });
-        NextResponse.end();
-    } else {
-        if(referer.includes('facebook')) {
-            NextResponse.writeHead(301, {
-                Location: 'https://svykute.com/'
-            });
-            NextResponse.end();
-        }
-        else {
-            NextResponse.writeHead(301, {
-                Location: 'https://zululion.com/'
-            });
-            NextResponse.end();
-        }
-    }
 }
